@@ -1,0 +1,73 @@
+#define _CRT_SECURE_NO_WARNINGS
+/*	题目描述---给出一百分制成绩，要求输出成绩等级‘A’、‘B’、‘C’、‘D’、‘E’。 
+90分以及90分以上为A，80-89分为B，70-79分为C，60-69分为D，60分以下为E。
+输入---一个整数0－100以内
+输出---一个字符，表示成绩等级*/
+#include <stdio.h>
+#include <string.h.>
+int main()
+{
+	float score = 0.0;
+	scanf("%f", &score);
+	if (score >= 90)
+	{
+		putchar('A');
+	}
+	else if (score > 80 && score <= 89)
+	{
+		putchar('B');
+	}
+	else if (score >= 70 && score <= 79)
+	{
+		putchar('C');
+	}
+	else if (score >= 60 && score <= 69)
+	{
+		putchar('D');
+	}
+	else
+	{
+		putchar('E');
+	}
+	return 0;
+}
+
+
+
+Switch----case----
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+int main()
+{
+	float score = 0.0;
+	scanf("%f", &score);
+	int S = (int)score / 10;
+	switch (S)
+	{
+	case 10:
+	case 9:
+		putchar('A');
+		break;
+	case 8:
+		putchar('B');
+		break;
+	case 7:
+		putchar('C');
+		break;
+	case 6:
+		putchar('D');
+		break;
+	case 5:
+	case 4:
+	case 3:
+	case 2:
+	case 1:
+	case 0:
+		putchar('E');
+		break;
+	default:
+		break;
+	}
+	return 0;
+}
