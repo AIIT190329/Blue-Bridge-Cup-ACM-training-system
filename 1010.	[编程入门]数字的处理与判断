@@ -1,0 +1,193 @@
+#define _CRT_SECURE_NO_WARNINGS
+/*给出一个不多于5位的整数，要求 1、求出它是几位数 2、分别输出每一位数字 3、按逆序输出各位数字，例如原数为321,应输出123
+输入---一个不大于5位的数字
+输出---三行 第一行 位数 第二行 用空格分开的每个数字，注意最后一个数字后没有空格 第三行 按逆序输出这个数*/
+/*确定位数
+#include <stdio.h>
+int main()
+{
+	int num = 0, index = 0;
+	scanf("%d", &num);
+	for (int i = 1,count=0; i < 10e5; i*=10)
+	{
+		index =num / i;
+		
+		if (index == 0)
+		{
+			index =count;
+			break;
+		}
+		count++;
+	}
+	printf("%d", index);
+	return 0;
+}*/
+
+
+/*这个是我自己写的*/
+/*#include <stdio.h>
+void fun(int num)
+{
+	int index = 0, digits = 0;
+	for (int i = 10; i < 10e10; i *= 10)
+	{
+		digits = num / i;
+		if (digits)
+		{
+			index++;
+		}
+		else
+		{
+			index++;
+			break;
+		}
+	}
+	printf("%d\n", index);
+	int a[10] = { 0 };
+	for (int i = 0, j = 10; i < index && j <= 10e10; i++, j *= 10)
+	{
+		a[i] = num % j / (j / 10);
+	}
+	for (int i = index - 1; i > -1; i--)
+	{
+		if (i > 0)
+		{
+			printf("%d ", a[i]);
+		}
+		else
+		{
+			printf("%d", a[i]);
+		}
+	}
+	puts("");
+	for (int i = 0; i < index; i++)
+	{
+		printf("%d", a[i]);
+	}
+}
+
+int main()
+{
+	int num = 0;
+	scanf("%d", &num);
+	fun(num);
+	return 0;
+}*/
+
+
+
+/*这题如果按常规思路说实话有点折磨人
+
+先循环确定位数，再循环正序输出，还要循环倒序输出
+
+几乎是相同的操作做了三遍
+
+个人认为用字符数组来处理应该最为简便
+
+
+
+解题思路
+
+将输入的数字当作字符串来储存，用strlen(  ) 函数得到字符串长度，即为数字位数
+
+将字符串从左到右遍历输出（带空格）
+
+最后还有一个回车不要忘了
+
+再将字符串从右往左遍历输出（不带空格）就好了
+
+
+
+注意事项：
+
+题目说数字位数不超过5，所以定义字符数组长度应不小于6
+
+因为字符串结尾还有结尾符 '\0' 占一位
+
+参考代码:
+
+#include <stdio.h>
+#include <string.h>         //C语言字符串头文件，strlen() 函数包含在此内
+  
+int main()
+{
+    char str[10];                       //定义字符串长度为 10
+    scanf("%s", str);                   //输入数字 (作为字符串输入)
+      
+    int len = strlen(str);              //获取字符串长度
+    printf("%d\n", len);                //输出字符串长度，即为数字位数
+    for (int i = 0; i < len; i++)       //从左往右遍历输出
+    {
+        printf("%c ", str[i]);
+    }
+    printf("\n");                       //输出回车
+    for (int i = len - 1; i >= 0; i--)  //从右往左遍历输出
+    {
+        printf("%c", str[i]);
+    }
+    return 0;
+}*/
+
+
+/*#include<iostream>
+using namespace std;
+int main()
+{
+	int num[5];  //定义一个有 5 个元素的数组
+	int n;
+	int number = 0; //记录数位
+	cin >> n;  //获取输入的数
+	for (int i = 0; i < 5; i++)
+	{  //
+		if (n == 0) break;  //如果输入的数为 0 则退出这个循环
+		else 
+		{
+			num[i] = n % 10;  //获取最后一位数，num[0] 为最后一个数，num[1] 是倒数第二个数
+			n = n / 10;  //n 向前进 1 位,无小数点
+			number++;
+		}
+	}
+	cout << number << endl;  //输出数位
+	for (int i = number - 1; i >= 0; i--)
+	{
+		if (i != 0) 
+		{  //如果 num[i] 不是最后一个数，则加一个空格
+			cout << num[i] << " ";
+		}
+		else cout << num[i];  //输出最后一个数
+	}
+	cout << endl;  //换行
+	for (int i = 0; i < number; i++) 
+	{
+		cout << num[i];  //按照 num[i] 顺序输出
+	}
+	return 0;
+}*/
+
+
+Java---
+/*
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+public class Main {
+    public static void main(String[] args) throws IOException 
+	{
+        BufferedReader bufr = new BufferedReader(new InputStreamReader(System.in)); //获取键盘输入
+        String line = bufr.readLine(); //获取一行数据
+        System.out.println(line.length()); //获取长度
+        char[] ch = line.toCharArray(); //把字符串变成字符数组
+        //循环 ch.length获得数组长度
+        for(int a = 0; a<ch.length; a++)
+		{
+            if(a == ch.length - 1) //最后无空格，记得换行
+                System.out.println(ch[a]);
+            else
+                System.out.print(ch[a]+"\t");
+        }
+        //从最后一个开始循环
+        for(int a = ch.length - 1; a >= 0; a--) {
+                System.out.print(ch[a]); //倒序输出
+        }        
+    }
+}*/
