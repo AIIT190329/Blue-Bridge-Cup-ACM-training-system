@@ -1,0 +1,111 @@
+/*
+题目描述---输入一个华氏温度，要求输出摄氏温度。公式为 c = 5(F - 32) / 9，取位2小数。
+
+输入---一个华氏温度，浮点数
+
+输出---摄氏温度，浮点两位小数*/
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+int main()
+{
+	float F = 0.0, c = 0.0;
+	scanf("%f", &F);
+	c = 5 * (F - 32) / 9;
+	printf("%.2f", c);
+	return 0;
+}
+
+#include <iostream>
+using namespace std;
+int main()
+{
+	float F = 0.0, c = 0.0;
+	cin >> F;
+	c = 5 * (F - 32) / 9;
+	printf("%.2f", c);
+	return 0;
+}
+/*
+解题思路以及注意事项：
+
+注意scanf("%lf", &f); 或者scanf("%f", &f); 如果你前面定义的f是用double类型的话，就应该用% lf格式，如果f是float类型的话，就应该用% f，不然会有意想不到的结果。
+
+注意printf("%lf", c); 或者printf("%f", c); 这里面的格式% lf或者% f与c的类型相同，c为double类型的，就用% lf，c为float类型就用% f。
+
+注意分号和引号千万不要错，还有中英文的书写问题。
+
+实例代码：*/
+
+#include <stdio.h>
+int main()
+{
+	double f, c;
+	scanf("%lf", &f);
+	c = 5 * (f - 32) / 9;
+	printf("c=%0.2lf", c);
+	return 0;
+}
+
+
+/*本题的C语言printf函数的格式输出方式，很多人都写了，我就来普及一下利用C++语言cout方式输出格式的方式
+
+主要是通过iomanip库的fixed函数和setprecision函数
+
+注意事项 :
+
+
+
+本题出现的两个变量都注明是浮点数，所以要定义为float类或double类
+
+参考代码 :
+*/
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	float f;
+	cin >> f;
+	float c = 5 * (f - 32) / 9;
+	cout << fixed << setprecision(2) << "c=" << c << endl;//fixed是小数点的意思，表示下面要对小数点后进行设置，setprecision是设置精度，括号中的数表示保留几位精度输出 
+	//如果不用fixed，直接使用setprecision(int)则表示保留几位有效数字 
+	return 0;
+}
+
+
+Java
+
+
+package com.aiit.thj;
+
+import java.util.Scanner;
+
+public class AIIT190329
+{
+
+	public static void main(String[] args)
+	{
+		// 		TODO Auto-generated method stub
+		float F = 0.0f, c = 0.0f;
+		Scanner sc = new Scanner(System.in);
+		F = sc.nextFloat();
+		c = 5 * (F - 32) / 9;
+		System.out.printf("%.2f", c);
+	}
+
+}
+
+
+
+import java.util.Scanner;
+public class Main {
+public static void main(String[] args)
+	{
+		//重点是保留两位小数的，方法很多，请询问度娘
+		Scanner sc = new Scanner(System.in);
+		double F, C;
+		F = sc.nextDouble();
+		C = 5 * (F - 32) / 9;
+		System.out.println("c=" + String.format("%.2f", C));
+	}
+}
