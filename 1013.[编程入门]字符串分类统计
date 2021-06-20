@@ -1,0 +1,164 @@
+#define _CRT_SECURE_NO_WARNINGS
+/*输入一行字符，分别统计出其中英文字母、数字、空格和其他字符的个数。*/
+/*解题思路 : C标准中有一个一个头文件<ctype.h>，这里面定义了一批C语言字符处理函数，用于测试字符是否属于特定的字符类别，如字母字符、控制字符、数字、等等；
+
+
+
+头文件：<ctype.h>
+
+函数：
+
+（1）int isalpha(int ch);
+
+判断ch是否为字母，如果是返回非0，反之返回0；
+
+
+
+（2）int isdigit(int ch);
+
+判断ch是否为数字，如果是返回非0，反之返回0；
+
+
+
+（3）int islower(int ch);
+
+判断ch是否为小写字母，如果是返回非0，反之返回0；
+
+
+
+（4）int isupper(int ch);
+
+判断ch是否为大写字母，如果是返回非0，反之返回0；
+
+
+
+……
+
+
+
+参考代码:*/
+
+/*#include <stdio.h>
+#include <ctype.h>
+int main()
+{
+	int letter = 0, number = 0, blank = 0, others = 0, c;        //分别为字母、数字、空格、其他
+	while ((c = getchar()) != '\n')
+	{
+		if (isalpha(c))              //判断是否为字母
+			letter++;
+		else if (isdigit(c))         //判断是都为数字
+			number++;
+		else if (c == ' ')           //判断是否为空格
+			blank++;
+		else                        //其他
+			others++;
+	}
+	printf("%d %d %d %d\n", letter, number, blank, others);
+	return 0;
+}*/
+
+/*#include <iostream>
+using namespace std;
+int main()
+{
+	char a;
+	int letter = 0, digital = 0, space = 0, other = 0;
+	while ((a = getchar()) != '\n')
+	{
+		if (('A' <= a && a <= 'Z') || ('a' <= a && a <= 'z'))
+		{
+			letter++;
+		}
+		else if ('0' <= a && a <= '9')
+		{
+			digital++;
+		}
+		else if (a == ' ')
+		{
+			space++;
+		}
+		else
+		{
+			other++;
+		}
+	}
+	cout << letter << endl;
+	cout << space << endl;
+	cout << digital << endl;
+	cout << other << endl;
+	return 0;
+}*/
+
+
+
+
+Java----------------------------------------------------------------------------------------------------------
+package com.aiit.thj;
+
+import java.util.Scanner;
+
+public class AIIT190329 
+{
+	public static void main(String[] args) 
+	{
+// 		TODO Auto-generated method stub
+		法一------------------------------------------------------------------------------------
+		int letter = 0,num = 0, space = 0,other = 0;
+		Scanner sc=new Scanner(System.in);
+		str=sc.nextLine();
+		char[] ch = str.toCharArray();
+		for(int i=0;i<str.length();i++)
+		{ 
+			if (('A' <= ch[i] && ch[i] <= 'Z') || ('a' <= ch[i] && ch[i] <= 'z'))
+			{
+				letter++;
+			}
+			else if ('0' <= ch[i] && ch[i] <= '9')
+			{
+				num++;
+			}
+			else if (ch[i] == 32)
+			{
+				space++;
+			}
+			else
+			{
+				other++;
+			}
+		}
+		System.out.printf("字母---%d\n数字---%d\n空格---%d\n其他---%d",letter,num,space,other);*/
+		
+		
+		
+		
+		法二------------------------------------------------------------------------------------
+        int letter = 0,num = 0, space = 0,other = 0;
+ 
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        char[] ch = str.toCharArray(); //将字符串转换为字符数组
+        for(int i=0;i<=ch.length-1;i++) 
+        {
+            if(Character.isLetter(ch[i]))
+            {
+                letter++;}
+            else if(Character.isDigit(ch[i]))
+            {
+                num++;
+            }
+            else if(Character.isSpaceChar(ch[i]))
+            {
+                space++;
+            }
+            else 
+            {
+                other++;
+            }
+        }
+        System.out.println(letter+" "+num+" "+space+" "+other);
+	}
+
+
+}
+
